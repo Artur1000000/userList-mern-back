@@ -6,7 +6,11 @@ import AuthRoute from "./src/routes/authRoute.js";
 import RegRoute from "./src/routes/RegRoute.js";
 import GetMeRoute from "./src/routes/GetMeRoute.js";
 import GetUsersRoute from "./src/routes/GetUsersRoute.js";
-import {BlockUsersRoute, DeleteUsersRoute, UnblockUsersRoute} from "./src/routes/ActionUsersRouter.js";
+import {
+  BlockUsersRoute,
+  DeleteUsersRoute,
+  UnblockUsersRoute,
+} from "./src/routes/ActionUsersRouter.js";
 
 const app = express();
 
@@ -41,6 +45,10 @@ app.use("/api", BlockUsersRoute);
 app.use("/api", UnblockUsersRoute);
 
 app.use("/api", DeleteUsersRoute);
+
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "ok" });
+});
 
 app.listen(PORT, (err) => {
   if (err) {
